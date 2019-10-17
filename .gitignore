@@ -1,0 +1,5 @@
+*.bat
+*.pyc
+.vscode
+*.code-workspace
+Pipfile*
