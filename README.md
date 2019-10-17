@@ -2,7 +2,7 @@ Certificate Generator
 ======
 **Certificate Generator** was designed to generate and automatically email (via a gmail account) certificates based on data from a CSV file. 
 
-#### Screenshot
+### Screenshot
 ![Screenshot software](https://github.com/mattsmithuk/certificate_generator/blob/master/screenshot.png "screenshot software")
 
 ## Download
@@ -13,7 +13,7 @@ Certificate Generator
 * Pango, cairo and GDK-PixBuf libraries - see https://weasyprint.readthedocs.io/en/stable/install.html
 
 ### Python Packages
-* See [REQUIREMENTS](https://github.com/mattsmithuk/certificate_generator/blob/master/REQUIREMENTS.txt)
+* See [requirements](https://github.com/mattsmithuk/certificate_generator/blob/master/requirements.txt)
 
 ## License 
 * see [LICENSE](https://github.com/mattsmithuk/certificate_generator/blob/master/LICENSE.md) file
@@ -29,11 +29,11 @@ pip install -r requirements.txt
 ```
 
 ## To Do
-[] Improve date input
-[x] Check for correct CSV layout
-[] Option to generate Faculty certificates
-[] Package into single exe for easy distribution
-[] Replace weasyprint to remove requirement for GTK libraries
+- [] Improve date input
+- [x] Check for correct CSV layout
+- [] Option to generate Faculty certificates
+- [] Package into single exe for easy distribution
+- [] Replace weasyprint to remove requirement for GTK libraries
 
 ## Contact
 * e-mail: code@mattsmith.email
