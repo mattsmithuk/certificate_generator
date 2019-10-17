@@ -29,11 +29,11 @@ pip install -r requirements.txt
 ```
 
 ## To Do
-- [] Improve date input
+- [ ] Improve date input
 - [x] Check for correct CSV layout
-- [] Option to generate Faculty certificates
-- [] Package into single exe for easy distribution
-- [] Replace weasyprint to remove requirement for GTK libraries
+- [ ] Option to generate Faculty certificates
+- [ ] Package into single exe for easy distribution
+- [ ] Replace weasyprint to remove requirement for GTK libraries
 
 ## Contact
 * e-mail: code@mattsmith.email
