@@ -1,5 +1,4 @@
-*.bat
-*.pyc
 .vscode
+*.bat
 *.code-workspace
-Pipfile*
+*.pyc
