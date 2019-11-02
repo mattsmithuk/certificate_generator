@@ -91,12 +91,7 @@ def main():
     """
 
 # Default Email Content
-    content = ''' Dear {firstname},\n\n
-
-    Thank you for providing your feedback for this tutorial.\n\n
-
-    Please find attached an attendance certificate.'''
-
+    content = '''Thank you for providing your feedback for this tutorial.\n\nPlease find attached an attendance certificate.'''
 
     parser = GooeyParser()
     cert_group = parser.add_argument_group('Required')
@@ -146,7 +141,7 @@ def main():
         for csv_row in f_csv:
             i += 1
             pdf_filename = f"{i}_{csv_row['First Name'][0]+csv_row['Last Name'][0]}_Certificate"
-            print(f"DEBUG: Filename is {pdf_filename}")
+            print(f"DEBUG: Filename is {pdf_filename}.pdf")
             full_name = csv_row["First Name"] + " " + csv_row["Last Name"]
             print(f"DEBUG: Full name is {full_name}")
 
@@ -160,10 +155,9 @@ def main():
                     to_email=csv_row["Email"],
                     firstname=csv_row["First Name"],
                     date=data["date"],
-                    msg_content=content.format(firstname='csv_row["First Name"]'),
+                    msg_content=content,
                     attachment=working_dir + pdf_filename + ".pdf",
             )
-
 
 if __name__ == "__main__":
     main()
