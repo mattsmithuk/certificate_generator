@@ -2,16 +2,15 @@ Certificate Generator
 ======
 **Certificate Generator** was designed to generate and automatically email (via a gmail account) certificates based on data from a CSV file. 
 
-### Screenshot
-![Screenshot software](https://github.com/mattsmithuk/certificate_generator/blob/master/screenshot.png "screenshot software")
-
-## Download
+### Download
 * [Version 0.5 - Windows 64bit](https://github.com/mattsmithuk/certificate_generator/blob/master/dist/cert_gen.exe)
 
-## Requirements
-* Python 3.7+
+## Screenshot
+![Screenshot software](https://github.com/mattsmithuk/certificate_generator/blob/master/screenshot.png "screenshot software")
+
 
 ### Python Packages
+* Python 3.7+
 * See [requirements](https://github.com/mattsmithuk/certificate_generator/blob/master/requirements.txt)
 
 ## License 
