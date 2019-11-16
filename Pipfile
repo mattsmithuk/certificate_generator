@@ -6,11 +6,10 @@ verify_ssl = true
 [dev-packages]
 flake8 = "*"
 black = "*"
+pyinstaller = "*"
 
 [packages]
-yagmail = "*"
 jinja2 = "*"
-keyring = "*"
 gooey = '*'
 
 [requires]

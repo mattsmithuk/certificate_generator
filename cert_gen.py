@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 
 import csv
+import os
 from gooey import Gooey, GooeyParser
-import yagmail
-
 
 def generate_cert(args, name_input, filename, export_path):
     import subprocess
     import jinja2
-    import os
 
-    template_path = "./template.html"
+    template_path = "incl/template.html"
     context = {
         "name": name_input,
         "date": args.date,
@@ -41,7 +39,7 @@ def generate_cert(args, name_input, filename, export_path):
         if args.verbose:
             print(f"DEBUG: Created {html_name}")
 
-        sub_args = f'".\\wkhtmltopdf.exe" --zoom 1.244 -B 0 -L 1 -R 0 -T 10 "{html_name}" "{pdf_name}"'
+        sub_args = f'"incl\\wkhtmltopdf.exe" --zoom 1.244 -B 0 -L 1 -R 0 -T 10 "{html_name}" "{pdf_name}"'
         child = subprocess.Popen(
             sub_args, shell=True, stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL
         )
@@ -70,30 +68,44 @@ def generate_cert(args, name_input, filename, export_path):
     return create_pdf(args, template_path, export_path, context)
 
 
-def send_email(
-    email_user, email_pass, to_email, firstname, date, msg_content, attachment
-):
-    """
-    Sends an email from a gmail account
-    Uses 'msg_template' as an email template using string formatting
-    """
+def send_gmail(sender, password, recipient, subject, message, attach_file=None):
+    import sys
+    import smtplib
+    import time
+    import imaplib
+    from email.mime.multipart import MIMEMultipart
+    from email.mime.text import MIMEText
+    from email.mime.base import MIMEBase
+    from email import encoders
 
-    yag = yagmail.SMTP(email_user, email_pass)
 
-    try:
-        yag.send(
-            to=to_email,
-            subject=f"Attendance Certificate for Tutorial on {date}",
-            contents=msg_content.format(firstname),
-            attachments=attachment,
-        )
-    except:
-        print(
-            f"ERROR: Unable to send email to {to_email}. Are you sure you entered the correct password?"
-        )
-        pass
-    else:
-        print(f"MSG: Certificate sent to {to_email}\n")
+    msg = MIMEMultipart()
+    msg['From'] = sender
+    msg['To'] = recipient
+    msg['Subject'] = subject
+
+    afilepath, afilename = os.path.split(attach_file)
+
+    msg.attach(MIMEText(message,'plain'))
+
+    # attachment
+    if attach_file != None:
+        filename = afilename
+        attachment = open(attach_file,'rb')
+
+        part = MIMEBase('application','octet-stream')
+        part.set_payload((attachment).read())
+        encoders.encode_base64(part)
+        part.add_header(f'Content-Disposition',"attachment; filename= {}".format(afilename))
+
+        msg.attach(part)
+
+    server = smtplib.SMTP('smtp.gmail.com',587)
+    server.starttls()
+    server.login(sender,password)
+    text = msg.as_string()
+    server.sendmail(sender,recipient,text)
+    server.quit()
 
 
 @Gooey(
@@ -116,8 +128,19 @@ def send_email(
                     "license": "MIT",
                 },
             ],
+        },
+        {
+            "name": "Help",
+            "items": [
+                {
+                    "type": "MessageDialog",
+                    "menuTitle": 'CSV File',
+                    'message': 'The CSV file MUST include the following columns: "First Name", "Last Name" and "Email"',
+                    'caption': 'CSV File Requirements'
+                }
+            ]
         }
-    ],
+    ]
 )
 def main():
     """
@@ -178,10 +201,6 @@ def main():
     # Process inputs
     args = parser.parse_args()
 
-    # Setup Yagmail if 'Send Emails' selected
-    if args.send:
-        yagmail.register(args.email, args.password)
-
     # Iterate through CSV file
     i = 0
     with open(args.filename, mode="r") as f:
@@ -205,16 +224,22 @@ def main():
             # Send Emails if selected
             if args.send:
                 print(f"MSG: Sending Certificate to {csv_row['Email']}")
-                send_email(
-                    email_user=args.email,
-                    email_pass=args.password,
-                    to_email=csv_row["Email"],
-                    firstname=csv_row["First Name"],
-                    date=args.date,
-                    msg_content=content,
-                    attachment=pdf_filename,
-                )
-
+                try:
+                    send_gmail(
+                        sender=args.email,
+                        password=args.password,
+                        recipient=csv_row["Email"],
+                        subject=f"Attendance Certificate for Tutorial on {args.date}",
+                        message=content,
+                        attach_file=pdf_filename,
+                    )
+                except:
+                    print(
+                        f'ERROR: Unable to send email to {csv_row["Email"]}. Are you sure you entered the correct password?'
+                    )
+                    pass
+                else:
+                    print(f'MSG: Certificate sent to {csv_row["Email"]}\n')
 
 if __name__ == "__main__":
     main()

@@ -32,11 +32,13 @@ pipenv install
 ```
 
 ## To Do
-- [ ] Improve date input
 - [x] Check for correct CSV layout
-- [ ] Option to generate Faculty certificates
-- [ ] Package into single exe for easy distribution
 - [x] Replace weasyprint to remove requirement for GTK libraries
+- [x] Removed dependancy on Yagmail
+- [ ] Package into single exe for easy distribution
+- [ ] Option to generate Faculty certificates
+- [ ] Improve date input
+
 
 ## Contact
 * e-mail: code@mattsmith.email
