@@ -5,9 +5,9 @@ verify_ssl = true
 
 [dev-packages]
 flake8 = "*"
+black = "*"
 
 [packages]
-weasyprint = "*"
 yagmail = "*"
 jinja2 = "*"
 keyring = "*"
@@ -15,3 +15,6 @@ gooey = '*'
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
