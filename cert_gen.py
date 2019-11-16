@@ -121,6 +121,7 @@ def resource_path(relative_path):
 @Gooey(
     program_name="ICM Tutorial Certificate Generator",
     program_description="Designed For Use on Windows",
+    image_dir=resource_path("incl"),
     default_size=(680, 750),
     menu=[
         {

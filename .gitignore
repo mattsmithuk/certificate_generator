@@ -4,6 +4,5 @@
 *.pyc
 test.csv
 build
-dist
 __pycache__
 *.spec

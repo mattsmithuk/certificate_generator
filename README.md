@@ -6,7 +6,7 @@ Certificate Generator
 ![Screenshot software](https://github.com/mattsmithuk/certificate_generator/blob/master/screenshot.png "screenshot software")
 
 ## Download
-* [Version 0.5](https://github.com/mattsmithuk/certificate_generator/archive/master.zip)
+* [Version 0.5 - Windows 64bit](https://github.com/mattsmithuk/certificate_generator/blob/master/dist/cert_gen.exe)
 
 ## Requirements
 * Python 3.7+
@@ -19,6 +19,12 @@ Certificate Generator
 
 ## Version 
 * Version 0.5
+
+## Credits
+
+### Icon
+## Contributors
+* Icons made by [Smashicons](https://www.flaticon.com/authors/smashicons)
 
 ## How-to use this code
 * Can be run in a virtual enviroment
