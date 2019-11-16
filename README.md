@@ -24,7 +24,7 @@ Certificate Generator
 ## Contributors
 * Icons made by [Smashicons](https://www.flaticon.com/authors/smashicons)
 
-## How-to use this code
+## How to use the code
 * Can be run in a virtual enviroment
 * Install required packages with: 
 ```
@@ -39,7 +39,7 @@ pipenv install
 - [x] Check for correct CSV layout
 - [x] Replace weasyprint to remove requirement for GTK libraries
 - [x] Removed dependancy on Yagmail
-- [ ] Package into single exe for easy distribution
+- [x] Package into single exe for easy distribution
 - [ ] Option to generate Faculty certificates
 - [ ] Improve date input
 
