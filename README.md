@@ -21,7 +21,6 @@ Certificate Generator
 
 ## Credits
 
-### Icon
 ## Contributors
 * Icons made by [Smashicons](https://www.flaticon.com/authors/smashicons)
 
