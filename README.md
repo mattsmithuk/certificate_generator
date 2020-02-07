@@ -2,7 +2,10 @@ Certificate Generator
 ======
 **Certificate Generator** was designed to generate and automatically email (via a gmail account) certificates based on data from a CSV file. 
 
+EMAIL FUNCTION CURRENTLY NOT WORKING 
+
 ### Download
+* Awaiting rebuild
 * [Version 0.5 - Windows 64bit](https://github.com/mattsmithuk/certificate_generator/blob/master/dist/cert_gen.exe)
 
 ## Screenshot
@@ -17,7 +20,7 @@ Certificate Generator
 * see [LICENSE](https://github.com/mattsmithuk/certificate_generator/blob/master/LICENSE.md) file
 
 ## Version 
-* Version 0.5
+* Version 0.51
 
 ## Credits
 
@@ -42,6 +45,8 @@ pipenv install
 - [x] Package into single exe for easy distribution
 - [ ] Option to generate Faculty certificates
 - [ ] Improve date input
+- [ ] Fix automatic email function
+- [ ] Fix PyInstaller spec file
 
 
 ## Contact
