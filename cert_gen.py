@@ -16,7 +16,7 @@ def generate_cert(args, name_input, filename, export_path):
         "date": args.date,
         "location": args.location,
         "organiser1": args.organiser1,
-        "organiser2": args.organiser1,
+        "organiser2": args.organiser2,
     }
 
     def render(template_path, context):
@@ -148,6 +148,11 @@ def resource_path(relative_path):
                     "menuTitle": "CSV File",
                     "message": 'The CSV file MUST include the following columns: "First Name", "Last Name" and "Email"',
                     "caption": "CSV File Requirements",
+#                },
+#                {
+#                    "type": "Link",
+#                    "menuTitle": "View Certificate Template",
+#                    "url": resource_path("incl\\template.html"),
                 }
             ],
         },
@@ -211,6 +216,10 @@ def main():
 
     # Process inputs
     args = parser.parse_args()
+
+    # Make Organiser 2 Blank if no input
+    if args.organiser2 == None:
+        args.organiser2 = ''
 
     # Iterate through CSV file
     i = 0
