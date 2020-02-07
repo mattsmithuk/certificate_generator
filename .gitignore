@@ -6,3 +6,4 @@ test.csv
 build
 __pycache__
 *.spec
+*.7z
